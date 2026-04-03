@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài tập 2 - Form Đăng ký</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav><a href="index.html">← Menu</a></nav>
+    <main>
+        <h2>Form Đăng ký thành viên</h2>
+        <form id="regForm" onsubmit="validate(event)">
+            <input type="text" id="user" placeholder="Họ và tên" required>
+            <input type="email" id="email" placeholder="Email (ví dụ: abc@gmail.com)" required>
+            <input type="password" id="pass" placeholder="Mật khẩu (8+ ký tự, đủ loại)" required>
+            <label><input type="checkbox" id="agree" required> Đồng ý điều khoản</label>
+            <br><br>
+            <button type="submit">Đăng ký ngay</button>
+        </form>
+    </main>
+    <script>
+        function validate(e) {
+            e.preventDefault();
+            const pass = document.getElementById('pass').value;
+            const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+
+            if(!regex.test(pass)) {
+                alert("Mật khẩu phải từ 8 ký tự, gồm chữ hoa, chữ thường và số!");
+                return;
+            }
+
+            const data = { name: document.getElementById('user').value, email: document.getElementById('email').value };
+            localStorage.setItem('user', JSON.stringify(data));
+            alert("Đăng ký thành công! Đã lưu vào LocalStorage.");
+        }
+    </script>
+</body>
+</html>

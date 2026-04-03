@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài tập 1 - Sản phẩm</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav><a href="index.html">← Menu</a></nav>
+    <main>
+        <h2>Danh sách sản phẩm</h2>
+        <input type="text" id="txtSearch" placeholder="Nhập tên sản phẩm cần tìm..." onkeyup="search()">
+        <div id="displayArea"></div>
+    </main>
+    <script>
+        const products = [
+            { name: "Vợt cầu lông Yonex", price: "2.500.000đ" },
+            { name: "Giày Lining", price: "1.200.000đ" },
+            { name: "Áo thể thao", price: "350.000đ" },
+            { name: "Quấn cán vợt", price: "30.000đ" },
+            { name: "Cầu lông Hải Yến", price: "250.000đ" }
+        ];
+
+        function show(data) {
+            const html = data.length > 0 ? data.map(p => `
+                <div class="card"><b>${p.name}</b> - Giá: ${p.price}</div>
+            `).join('') : "<p class='error'>Không tìm thấy sản phẩm!</p>";
+            document.getElementById('displayArea').innerHTML = html;
+        }
+
+        function search() {
+            const val = document.getElementById('txtSearch').value.toLowerCase();
+            const filtered = products.filter(p => p.name.toLowerCase().includes(val));
+            show(filtered);
+        }
+        show(products); // Hiện lúc đầu
+    </script>
+</body>
+</html>

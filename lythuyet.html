@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trả lời Lý thuyết - Đề số 1</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .theory-section { margin-bottom: 40px; line-height: 1.8; }
+        .theory-section h3 { color: #2980b9; border-bottom: 2px solid #2980b9; padding-bottom: 5px; margin-top: 25px; }
+        .example-box { background: #f8f9fa; border-left: 4px solid #27ae60; padding: 15px; margin: 15px 0; font-style: italic; }
+        code { background: #eee; padding: 2px 5px; border-radius: 3px; font-family: monospace; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>PHẦN 1: GIẢI THÍCH LÝ THUYẾT CHI TIẾT</h1>
+    </header>
+    <nav>
+        <a href="index.html">Trang chủ</a>
+        <a href="lythuyet.html">Lý thuyết</a>
+        <a href="about.html">Điểm danh</a>
+    </nav>
+
+    <main>
+        <section class="theory-section">
+            <h3>1. Phân biệt Position: Absolute và Relative</h3>
+            <p><b>Position Relative:</b> Là thuộc tính định vị tương đối. Khi sử dụng, phần tử vẫn nằm trong luồng tài liệu (document flow), chiếm diện tích vốn có của nó. Việc dịch chuyển (top, left...) chỉ là thay đổi vị trí hiển thị so với chính nó ban đầu.</p>
+            <p><b>Position Absolute:</b> Là định vị tuyệt đối. Phần tử bị tách hoàn toàn khỏi luồng tài liệu, không còn chiếm diện tích trong layout. Vị trí của nó được tính dựa trên phần tử cha gần nhất có thuộc tính <code>position</code> (thường là Relative).</p>
+            
+            <div class="example-box">
+                <b>Ví dụ Responsive:</b> Để tạo một banner có chữ đè lên ảnh, ta đặt thẻ chứa là <code>relative</code> và chữ là <code>absolute</code>. Khi deploy lên hosting, việc sử dụng đơn vị <code>%</code> hoặc <code>vw/vh</code> thay vì <code>px</code> cho các giá trị top/left sẽ giúp các phần tử này tự động co giãn theo kích thước màn hình thiết bị (Mobile, Tablet).
+            </div>
+        </section>
+
+        <section class="theory-section">
+            <h3>2. Quy trình đăng ký Domain, Hosting và vai trò DNS</h3>
+            <p><b>Quy trình:</b> Đăng ký tên miền (Domain) tại nhà cung cấp -> Thuê không gian lưu trữ (Hosting) -> Cấu hình bản ghi để liên kết cả hai.</p>
+            <p><b>Vai trò DNS (Domain Name System):</b> DNS đóng vai trò như một "danh bạ điện thoại" của Internet. Nó biên dịch các tên miền dễ nhớ (như google.com) sang địa chỉ IP khô khan của máy chủ (như 142.250.190.46) để trình duyệt có thể tìm nạp tài nguyên.</p>
+            <p><b>Công cụ hỗ trợ:</b> <code>GitHub Pages</code> và <code>Netlify</code> là hai nền tảng tuyệt vời để deploy web tĩnh. Chúng cung cấp sẵn chứng chỉ SSL miễn phí và tự động cập nhật khi ta push code mới.</p>
+            <p><b>Rủi ro bảo mật:</b> Nếu không cấu hình HTTPS (SSL), dữ liệu truyền đi giữa người dùng và server có thể bị đánh cắp (Sniffing). Ngoài ra, việc để lộ thông tin quản lý DNS có thể dẫn đến tấn công "Domain Hijacking" (chiếm đoạt tên miền).</p>
+        </section>
+
+        <section class="theory-section">
+            <h3>3. So sánh Let, Const và Var trong JavaScript</h3>
+            <table border="1" style="width:100%; border-collapse: collapse; text-align: left; margin: 15px 0;">
+                <tr style="background: #ecf0f1;">
+                    <th style="padding: 10px;">Đặc điểm</th>
+                    <th>Var</th>
+                    <th>Let</th>
+                    <th>Const</th>
+                </tr>
+                <tr>
+                    <td style="padding: 10px;"><b>Scope</b></td>
+                    <td>Function Scope</td>
+                    <td>Block Scope { }</td>
+                    <td>Block Scope { }</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px;"><b>Hoisting</b></td>
+                    <td>Có (trả về undefined)</td>
+                    <td>Không (lỗi TDZ)</td>
+                    <td>Không (lỗi TDZ)</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px;"><b>Gán lại</b></td>
+                    <td>Có</td>
+                    <td>Có</td>
+                    <td>Không</td>
+                </tr>
+            </table>
+            <div class="example-box">
+                <b>Ví dụ lỗi:</b> Sử dụng <code>var</code> trong vòng lặp <code>for</code> thường gây lỗi logic vì biến không được giới hạn trong khối lệnh. 
+                <br><b>Cách debug:</b> Mở <b>Chrome DevTools (F12)</b>, chọn tab <b>Sources</b>, đặt <i>Breakpoint</i> để theo dõi từng bước chạy của code và kiểm tra giá trị biến tại tab <i>Scope</i>.
+            </div>
+        </section>
+
+        <section class="theory-section">
+            <h3>4. Khái niệm Event Delegation (Ủy quyền sự kiện)</h3>
+            <p><b>Event Delegation</b> là kỹ thuật tận dụng cơ chế "Bubbling" (sự kiện nổi bọt) của JavaScript. Thay vì gán trực tiếp sự kiện cho hàng trăm phần tử con, chúng ta chỉ gán một sự kiện duy nhất cho phần tử cha chứa chúng.</p>
+            <div class="example-box">
+                <b>Ứng dụng danh sách động:</b> Khi bạn tạo một danh sách sản phẩm có thể thêm mới liên tục, bạn không cần phải viết code gán sự kiện <code>click</code> cho từng sản phẩm mới. Chỉ cần gán cho thẻ <code>ul</code> bên ngoài, khi nhấn vào bất kỳ sản phẩm nào, sự kiện sẽ "bay" lên thẻ cha và được xử lý tại đó.
+            </div>
+            <p><b>Lợi ích:</b> Giảm thiểu bộ nhớ (không tạo quá nhiều listener), tối ưu hiệu suất render và giúp code gọn gàng, dễ bảo trì hơn khi tích hợp cùng HTML/CSS.</p>
+        </section>
+    </main>
+
+    <footer style="text-align: center; padding: 20px; color: #7f8c8d;">
+        &copy; 2026 - Bài thi của sinh viên Lê Trường Tuấn Anh
+    </footer>
+</body>
+</html>
