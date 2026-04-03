@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên hệ - Lê Trường Tuấn Anh</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .contact-info, .contact-form {
+            flex: 1;
+            min-width: 300px;
+        }
+        .info-item {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .info-item b {
+            width: 100px;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>TRANG LIÊN HỆ</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">Trang chủ</a>
+        <a href="lythuyet.html">Lý thuyết</a>
+        <a href="about.html">Điểm danh</a>
+        <a href="contact.html">Liên hệ</a>
+    </nav>
+
+    <main>
+        <h2>Thông tin liên hệ</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="card">
+                    <h3>Thông tin cá nhân</h3>
+                    <div class="info-item"><b>Họ tên:</b> Lê Trường Tuấn Anh</div>
+                    <div class="info-item"><b>MSSV:</b> 231A010894</div>
+                    <div class="info-item"><b>Email:</b> tuananh@student.edu.vn</div>
+                    <div class="info-item"><b>SĐT:</b> 090x xxx xxx</div>
+                    <div class="info-item"><b>Địa chỉ:</b> TP. Hồ Chí Minh</div>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <div class="card">
+                    <h3>Gửi tin nhắn cho em</h3>
+                    <form id="feedbackForm">
+                        <input type="text" placeholder="Tên của thầy/bạn" required>
+                        <input type="email" placeholder="Email liên hệ" required>
+                        <textarea style="width: 100%; padding: 10px; border-radius: 4px; border: 1px solid #ccc; height: 100px;" placeholder="Nội dung tin nhắn..."></textarea>
+                        <button type="button" onclick="alert('Cảm ơn thầy đã để lại lời nhắn!')" style="margin-top: 10px;">Gửi tin nhắn</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer style="text-align: center; padding: 20px; color: #7f8c8d;">
+        &copy; 2026 - Thiết kế bởi Lê Trường Tuấn Anh
+    </footer>
+</body>
+</html>
